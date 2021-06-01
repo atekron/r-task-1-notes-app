@@ -13,28 +13,48 @@
         <h1 class="header__title">Notes App</h1>
         <button class="header__create-btn">Create Note</button>
       </header>
-      <section class="content">
-        <div class="content__header">
+
+      <nav class="nav">
+        <button class="nav__all">All Notes</button>
+        <button class="nav__archive">Archive</button>
+      </nav>
+
+      <form class="create-note">
+        <h2 class="create-note__title">Create New Note</h2>
+        <label for="create-note__category">Choose category of note:</label>
+        <select name="category" id="create-note__category">
+          <option value="Task">Task</option>
+          <option value="Random Thought">Random Thought</option>
+          <option value="Ideas">Idea</option>
+        </select>
+        <label for="create-note__text">Write note:</label>
+        <textarea
+          name="text"
+          id="create-note__text"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <button class="create-note__save">> Save</button>
+      </form>
+
+      <div class="content">
+        <!-- <div class="content__header">
           <p class="content__created">Created</p>
           <p class="content__content">Note</p>
           <p class="content__category">Category</p>
           <p class="content__dates">Dates</p>
-        </div>
-        <!-- <div class="note">
-          <div class="note__body">
-            <h3 class="note__created">3/1/2021</h3>
-            <p class="note__content">first note</p>
-            <p class="note__category">Task</p>
-            <p class="note__dates">3/1/2021</p>
-          </div>
-          <div class="note__settings">
-            <button class="note__edit">Edit</button>
-            <button class="note__archive">Archive</button>
-            <button class="note__delete">Delete</button>
-          </div>
         </div> -->
-      </section>
+      </div>
+      <div class="summary">
+        <h3 class="summary__title">Notes by Category:</h3>
+        <div class="summary__content">
+          <p>Idea: <span>5</span></p>
+          <p>Random Thought: <span>2</span></p>
+          <p>Task: <span>9</span></p>
+        </div>
+      </div>
     </div>
+
     <script type="module" src="/index.js"></script>
   </body>
 </html>

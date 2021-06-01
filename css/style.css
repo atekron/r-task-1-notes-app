@@ -45,6 +45,10 @@ body {
   margin-bottom: 1rem;
 }
 
+.nav {
+  margin-bottom: 1rem;
+}
+
 .note {
   background-color: yellow;
   padding: 1rem;
@@ -60,4 +64,9 @@ body {
 
 .note__settings {
   padding: 0 1rem;
+}
+
+.create-note {
+  display: none;
+  flex-direction: column;
 }
