@@ -1,4 +1,5 @@
 export const data = {
+  nextId: 8,
   category: ["Task", "Random Thought", "Idea"],
   notesListArchive: [],
   notesList: [
@@ -11,7 +12,7 @@ export const data = {
     {
       id: 2,
       created: "12/2/2021",
-      content: "second note",
+      content: "second 2/15/2016 15/8/1987 note",
       category: "Task",
     },
     {

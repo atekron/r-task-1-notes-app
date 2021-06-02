@@ -12,7 +12,7 @@ import {
 function reRender(archive = false) {
   const notes = archive ? data.notesListArchive : data.notesList;
   renderNotes(notes, ".content", archive);
-  displaySummary(data.category, notes, ".summary");
+  displaySummary(data.category, notes, ".summary__content");
   document.querySelectorAll(".note__delete").forEach((btn) =>
     btn.addEventListener("click", (e) => {
       deleteNote(e, data, archive);
@@ -25,7 +25,7 @@ function reRender(archive = false) {
   );
   document.querySelectorAll(".note__edit").forEach((btn) =>
     btn.addEventListener("click", (e) => {
-      editNote(e);
+      editNote(e, data);
     })
   );
 }
