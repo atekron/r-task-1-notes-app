@@ -15,7 +15,7 @@ function reRender(archive = false) {
   displaySummary(data.category, notes, ".summary");
   document.querySelectorAll(".note__delete").forEach((btn) =>
     btn.addEventListener("click", (e) => {
-      deleteNote(e, data);
+      deleteNote(e, data, archive);
     })
   );
   document.querySelectorAll(".note__archive").forEach((btn) =>

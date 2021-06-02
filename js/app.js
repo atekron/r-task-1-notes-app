@@ -66,13 +66,19 @@ export const editNote = (e) => {
   console.log(e.target.parentNode.parentNode);
 };
 
-export const deleteNote = (e, data) => {
+export const deleteNote = (e, data, archive = false) => {
   const noteDiv = e.target.parentNode.parentNode;
   noteDiv.style.display = "none";
   const noteId = parseInt(noteDiv.children[0].id);
-  data.notesList = data.notesList.filter((note) => {
-    return note.id !== noteId;
-  });
+  if (!archive) {
+    data.notesList = data.notesList.filter((note) => {
+      return note.id !== noteId;
+    });
+  } else {
+    data.notesListArchive = data.notesListArchive.filter((note) => {
+      return note.id !== noteId;
+    });
+  }
 };
 
 export const archiveNote = (e, data, unarchive = false) => {
