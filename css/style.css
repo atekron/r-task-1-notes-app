@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;700&display=swap");
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: brown;
+  position: relative;
+  font-family: "Heebo", sans-serif;
+  font-weight: 300;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 1rem;
+  width: 80%;
+  max-width: 960px;
+  background-color: whitesmoke;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 0.5rem solid brown;
+  margin: 1rem;
+  color: brown;
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header__create-btn {
+  margin-left: auto;
+  padding: 1rem;
+  background-color: brown;
+  color: white;
+  border: 0.2rem solid transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.small-btn {
+  padding: 0.2rem 0.5rem;
+  background-color: brown;
+  color: white;
+  border: 0.1rem solid transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.medium-btn {
+  padding: 0.5rem 1rem;
+  background-color: brown;
+  color: white;
+  border: 0.1rem solid transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+button {
+  transition: background-color 0.3s linear;
+}
+
+button:hover {
+  background-color: black;
+}
+
+.content__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav {
+  margin: 1rem;
+}
+
+.note {
+  background-color: yellow;
+  padding: 1rem;
+  border-bottom: 0.5rem solid yellowgreen;
+  margin: 1rem;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.note__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.note__settings {
+  padding: 0 1rem;
+}
+
+.create-note {
+  display: none;
+  margin: 1rem;
+  flex-direction: column;
+}
+
+.summary {
+  margin: 1rem;
+  text-transform: lowercase;
+  color: brown;
+}
+
+.summary p {
+  color: white;
+  background-color: brown;
+  padding: 0.2rem 1rem;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}

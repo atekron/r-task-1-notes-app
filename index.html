@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Notes App</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="header__title">Notes App</h1>
+        <button class="header__create-btn">Create Note</button>
+      </header>
+
+      <nav class="nav">
+        <button class="nav__all medium-btn">All Notes</button>
+        <button class="nav__archive medium-btn">Archive</button>
+      </nav>
+
+      <form class="create-note">
+        <h2 class="create-note__title">Create New Note</h2>
+        <label for="create-note__category">Choose category of note:</label>
+        <select name="category" id="create-note__category">
+          <option value="Task">Task</option>
+          <option value="Random Thought">Random Thought</option>
+          <option value="Idea">Idea</option>
+        </select>
+        <label for="create-note__text">Write note:</label>
+        <textarea
+          name="text"
+          id="create-note__text"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <button class="create-note__save small-btn">Save</button>
+      </form>
+
+      <div class="content">
+        <!-- <div class="content__header">
+          <p class="content__created">Created</p>
+          <p class="content__content">Note</p>
+          <p class="content__category">Category</p>
+          <p class="content__dates">Dates</p>
+        </div> -->
+      </div>
+      <div class="summary">
+        <h3 class="summary__title">Notes by Category:</h3>
+        <div class="summary__content">Loading...</div>
+      </div>
+    </div>
+
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>
