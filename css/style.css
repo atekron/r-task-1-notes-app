@@ -116,6 +116,10 @@ button:hover {
   flex-direction: column;
 }
 
+.create-note__edit {
+  display: none;
+}
+
 .summary {
   margin: 1rem;
   text-transform: lowercase;

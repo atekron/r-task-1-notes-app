@@ -1,3 +1,6 @@
+import { currentDate } from "./utilities.js";
+
+//render all notes
 export const renderNotes = (notes, htmlSelector, archive = false) => {
   const mountPoint = document.querySelector(htmlSelector);
   mountPoint.innerHTML = "";
@@ -25,32 +28,31 @@ export const renderNotes = (notes, htmlSelector, archive = false) => {
   });
 };
 
+//show note creation screen
 export const createNote = () => {
   document.querySelector(".header__create-btn").style.visibility = "hidden";
   document.querySelector(".create-note").style.display = "flex";
   document.querySelector(".content").style.display = "none";
 };
 
-export const saveNote = (form, data) => {
-  const creationDate = new Date();
-  const dd = creationDate.getDate();
-  const mm = creationDate.getMonth();
-  const yyyy = creationDate.getFullYear();
-  const newNote = {
-    id: data.nextId,
-    created: dd + "/" + mm + "/" + yyyy,
-    content: form.target["text"].value,
-    category: form.target["category"].value,
-  };
-  data.notesList.push(newNote);
-  data.nextId++;
-  document.querySelector(".header__create-btn").style.visibility = "visible";
-  document.querySelector(".create-note").style.display = "none";
-  document.querySelector(".content").style.display = "block";
-  form.target["text"].value = "";
-  form.target["category"].value = "Task";
-};
+// //handle saving new note to starage
+// export const saveNote = (form, data) => {
+//   const newNote = {
+//     id: data.nextId,
+//     created: currentDate(),
+//     content: form.target["text"].value,
+//     category: form.target["category"].value,
+//   };
+//   data.notesList.push(newNote);
+//   data.nextId++;
+//   document.querySelector(".header__create-btn").style.visibility = "visible";
+//   document.querySelector(".create-note").style.display = "none";
+//   document.querySelector(".content").style.display = "block";
+//   form.target["text"].value = "";
+//   form.target["category"].value = "Task";
+// };
 
+//display quantity of notes per category in storage
 export const displaySummary = (category, notes, htmlSelector) => {
   const mountPoint = document.querySelector(htmlSelector);
   mountPoint.innerHTML = "";
@@ -67,21 +69,43 @@ export const displaySummary = (category, notes, htmlSelector) => {
   mountPoint.appendChild(summaryDiv);
 };
 
+//handle saving new note to starage
+export const saveNote = (e, data) => {
+  const form = e.target.parentNode;
+  const newNote = {
+    id: data.nextId,
+    created: currentDate(),
+    content: form["text"].value,
+    category: form["category"].value,
+  };
+  data.notesList.push(newNote);
+  document.querySelector(".header__create-btn").style.visibility = "visible";
+  document.querySelector(".create-note").style.display = "none";
+  document.querySelector(".content").style.display = "block";
+  form["text"].value = "";
+  form["category"].value = "Task";
+};
+
+//edit selected note
 export const editNote = (e, data) => {
   const noteDiv = e.target.parentNode.parentNode;
+
   document.querySelector(".header__create-btn").style.visibility = "hidden";
   document.querySelector(".create-note").style.display = "flex";
   document.querySelector(".content").style.display = "none";
   document.querySelector(".create-note__title").innerHTML = "Edit Note: ";
+
   document.querySelector("#create-note__category").value =
     noteDiv.children[0].children[2].innerText;
   document.querySelector("#create-note__text").value =
     noteDiv.children[0].children[1].innerText;
-  document.querySelector(".create-note__save").style.display = "none";
-  const editBtn = document.createElement("button");
-  editBtn.innerText = "Save edit";
+
+  const saveBtn = document.querySelector(".create-note__save");
+  const editBtn = document.querySelector(".create-note__edit");
+  saveBtn.style.display = "none";
+  editBtn.style.display = "inline-block";
+
   editBtn.onclick = (e) => {
-    e.preventDefault();
     const editNoteId = parseInt(noteDiv.children[0].id);
     const editIndex = data.notesList.findIndex((note) => {
       return note.id === editNoteId;
@@ -89,12 +113,21 @@ export const editNote = (e, data) => {
     data.notesList[editIndex].category = document.querySelector(
       "#create-note__category"
     ).value;
-    data.notesList[editIndex].category =
+    data.notesList[editIndex].content =
       document.querySelector("#create-note__text").value;
+
+    console.log(data.notesList);
+
+    document.querySelector(".header__create-btn").style.visibility = "visible";
+    document.querySelector(".create-note").style.display = "none";
+    document.querySelector(".content").style.display = "block";
+    document.querySelector(".create-note__title").innerHTML = "Write note: ";
+    saveBtn.style.display = "inline-block";
+    editBtn.style.display = "none";
   };
-  document.querySelector(".create-note").appendChild(editBtn);
 };
 
+//delete selected note from storage
 export const deleteNote = (e, data, archive = false) => {
   const noteDiv = e.target.parentNode.parentNode;
   noteDiv.style.display = "none";
@@ -110,6 +143,7 @@ export const deleteNote = (e, data, archive = false) => {
   }
 };
 
+//remove selected note from notes list and move it to archive list
 export const archiveNote = (e, data, unarchive = false) => {
   const noteDiv = e.target.parentNode.parentNode;
   noteDiv.style.display = "none";
